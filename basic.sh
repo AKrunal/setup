@@ -1,3 +1,4 @@
-function basic{
+#!/usr/bin/zsh
+basic() {
     sudo apt install git stow ncdu xbacklight
 }

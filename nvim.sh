@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/zsh
 sudo apt update
 sudo apt upgrade
 
@@ -10,18 +10,16 @@ else
     InstallNvim
 fi
 
-function InstallNvim{
+InstallNvim() {
 
-    sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-    mkdir -p ~/.installation/nvim
-    git clone https://github.com/neovim/neovim.git ~/.installation/nvim/neovim
-    cd ~/.installation/nvim/neovim 
-    make 
-    sudo make install
-
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    ./nvim.appimage --appimage-extract
+    sudo mv squashfs-root /
+    sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 }
 
-function NvimNode{
+NvimNode() {
 
     sudo apt install nodejs
     sudo apt install npm
@@ -31,31 +29,29 @@ function NvimNode{
 
 }
 
-function Nvimpython{
+Nvimpython() {
 
     sudo apt intsall python3.11
     sudo apt install python3-pip
 
 }
 
-function NvimPlugin{
-    
+NvimPlugin() {
+
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     nvim -c PackerSync
 
-}
+        }
 
-function NvimPkg{
+NvimPkg() {
     sudo apt install universal-ctags ripgrep
 
 }
 
-function Servers{
-    sudo npm i -g bash-language-server
-    sudo npm i -g pyright
-}
+
+InstallNvim
 NvimNode
-NvimPlugin
 NvimPkg
 Nvimpython
+NvimPlugin
