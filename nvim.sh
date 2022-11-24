@@ -42,7 +42,7 @@ NvimPlugin() {
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     nvim -c PackerSync
 
-        }
+}
 
 NvimPkg() {
     sudo apt install universal-ctags ripgrep
