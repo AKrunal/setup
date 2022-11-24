@@ -1,0 +1,5 @@
+sudo apt install zsh
+zsh
+./basic.sh
+./zsh.sh
+./tmux.sh

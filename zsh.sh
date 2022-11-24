@@ -1,9 +1,9 @@
-#!/usr/bin/bash
+#!/usr/bin/zsh
 if [ ! -d "/usr/local/bin/nvim" ]
 then
     echo exist
 else
-    InstallZsh
+    echo "still installed"
 fi
 
 
@@ -12,8 +12,5 @@ InstallZsh() {
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
-SetupZsh() {
-    stow ~/$HOME/.dotfiles/zsh
-}
 
-
+InstallZsh
